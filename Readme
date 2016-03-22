@@ -17,7 +17,7 @@ Password:Qwerty1234
 
 Создайте в любом каталоге  на жестком диске, виртуальное окружение и дайте ему любое название:
 
-	virtualenv <name_virt_env>
+	virtualenv -p /usr/bin/python2.7 <name_virt_env>
 
 Откройте папку <name_virt_env>. 
 
