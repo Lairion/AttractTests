@@ -1,4 +1,6 @@
 Коды доступа к странице Админа =)
+На случай если захочется изменить таблицы базы данных с помощью GUI страницы admin 
+
 Login:TestUser
 email: Test@Test.ua
 Password:Qwerty1234
