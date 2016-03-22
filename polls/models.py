@@ -13,13 +13,13 @@ class People(models.Model):
 class Document(models.Model):
 
 	people_id = models.ForeignKey(People)
-	edication = models.CharField(max_length=200)
+	education = models.CharField(max_length=200)
 
 	def __unicode__(self):
-		return "%s %s" % (self.people_id,self.edication)
+		return "%s %s" % (self.people_id,self.education)
 
 	def __str__(self):
-		return "%s %s" % (self.people_id,self.edication)
+		return "%s %s" % (self.people_id,self.education)
 		
 
 		

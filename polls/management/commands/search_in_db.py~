@@ -11,7 +11,7 @@ class Command(BaseCommand):
 	\n  --name_srch\
 	\n The third argument is responsible for the return of the result on the selection condition. The argument must choose from the following options:\n \
 	\n  --id\
-	\n  --education\
+	\n  --edication\
 	\n  --name"
 
 
@@ -27,11 +27,11 @@ class Command(BaseCommand):
             default=False,
             help=u'Return id field')
 		
-		parser.add_argument('--education',
+		parser.add_argument('--edication',
             action='store_true',
-            dest='education',
+            dest='edication',
             default=False,
-            help=u'Return education field')
+            help=u'Return edication field')
 		
 		parser.add_argument('--name',
             action='store_true',
@@ -45,11 +45,11 @@ class Command(BaseCommand):
             default=False,
             help=u'Search in id field')
 		
-		parser.add_argument('--education_srch',
+		parser.add_argument('--edication_srch',
             action='store_true',
-            dest='education_srch',
+            dest='edication_srch',
             default=False,
-            help=u'Search in education field')
+            help=u'Search in edication field')
 		
 		parser.add_argument('--name_srch',
             action='store_true',
@@ -66,7 +66,7 @@ class Command(BaseCommand):
 						self.stdout.write("\n", ending='') 
 	
 	def filt_in_edication(self,condition,type_area):
-		result = Document.objects.filter(education=condition).values_list(type_area,flat=True)
+		result = Document.objects.filter(edication=condition).values_list(type_area,flat=True)
 		return result
 	
 	def filt_in_id(self,condition,type_area):
@@ -79,17 +79,17 @@ class Command(BaseCommand):
 		document_all = Document.objects.all()
 		self.stdout.write(u" %s \n" % (condition), ending='')
 		self.stdout.write("=============================================\n", ending='')
-		if (options['education'] and (options['name_srch'] or options['id_srch'])):
+		if (options['edication'] and (options['name_srch'] or options['id_srch'])):
 			if options['name_srch']:
-				self.search_in_name(condition,'education')
+				self.search_in_name(condition,'edication')
 				
 			elif options['id_srch']:
 				condition = int(condition)
-				result = self.filt_in_id(condition,'education')
+				result = self.filt_in_id(condition,'edication')
 				self.stdout.write("%s" % "".join(result), ending='')
 
-		elif (options['name'] and (options['education_srch'] or options['id_srch'])):
-			if options['education_srch']:
+		elif (options['name'] and (options['edication_srch'] or options['id_srch'])):
+			if options['edication_srch']:
 				fk = self.filt_in_edication(condition,'people_id')
 				for name_id in fk:
 					name = str(People.objects.get(pk=name_id))
@@ -101,19 +101,13 @@ class Command(BaseCommand):
 					name = str(People.objects.get(pk=name_id))
 					self.stdout.write("%s\n" % (name), ending='')	
 
-		elif (options['id'] and (options['education_srch'] or options['name_srch'])):
-			if options['education_srch']:
+		elif (options['id'] and (options['edication_srch'] or options['name_srch'])):
+			if options['edication_srch']:
 				array = self.filt_in_edication(condition,'id')
 				for result in array:
 					self.stdout.write("%s\n" % (result), ending='')
 			if options['name_srch']:
 				self.search_in_name(condition,'id')
-
-		self.stdout.write("=========================", ending='')
-		self.stdout.write("Document table All", ending='')
-		self.stdout.write("=========================\n", ending='')
-		for people in document_all:
-			self.stdout.write("%s \n" % (people), ending='')		
 		
 
 			
