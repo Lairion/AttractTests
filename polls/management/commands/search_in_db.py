@@ -20,6 +20,7 @@ class Command(BaseCommand):
 		
 		parser.add_argument('condition', nargs = '+',type=str)
 
+		
 		parser.add_argument('--id',
             action='store_true',
             dest='id',
@@ -36,25 +37,25 @@ class Command(BaseCommand):
             action='store_true',
             dest='name',
             default=False,
-            help=u'Return')
+            help=u'Return name field')
 		
 		parser.add_argument('--id_srch',
             action='store_true',
             dest='id_srch',
             default=False,
-            help=u'')
+            help=u'Search in id field')
 		
 		parser.add_argument('--edication_srch',
             action='store_true',
             dest='edication_srch',
             default=False,
-            help=u'')
+            help=u'Search in edication field')
 		
 		parser.add_argument('--name_srch',
             action='store_true',
             dest='name_srch',
             default=False,
-            help=u'')
+            help=u'Search in name field')
 
 	def search_in_name(self,condition,type_area):
 		for obj in People.objects.all():
@@ -107,8 +108,7 @@ class Command(BaseCommand):
 					self.stdout.write("%s\n" % (result), ending='')
 			if options['name_srch']:
 				self.search_in_name(condition,'id')
-		if options['all']:
-			Document.objects.values('id','people_id','edication')
+		
 
 			
 		
