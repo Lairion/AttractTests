@@ -8,7 +8,14 @@ Password:Qwerty1234
 ПЕРЕД ТЕМ КАК УСТАНАВЛИВАТЬ ПРОЕКТ.
 
 Удостоверьтесь, что на Вашей операционной системе стоить Python 2.7, pip.
+Инструкция по установке pip:https://pip.pypa.io/en/stable/installing/#using-linux-package-managers
 На Unix-системе также должен быть установлен virtualenv, и с его помощью запустить виртуальное окружение, в котором будет запускаться проект.
+Инструкция по установке virtualenv https://virtualenv.pypa.io/en/latest/installation.html
+Создать и активированть virtualenv можна введя в консоле следующие команды:
+
+virtualenv -p /usr/bin/python2.6 <name_env>
+cd <name_env>
+source bin/activate
 
 ИНСТРУКЦИЯ ПО УСТАНОВКЕ ПРОЕКТА
 
@@ -26,6 +33,8 @@ Password:Qwerty1234
 Далее в консоли(терминале)пишем следующее:
 
 	pip install -r reg.txt
+	
+Эта команда установит все нужные пакеты для развертывания проекта.
 
 ТЕСТОВОЕ ЗАДАНИЕ
 
