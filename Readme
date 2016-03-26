@@ -13,7 +13,7 @@ Password:Qwerty1234
 Инструкция по установке virtualenv https://virtualenv.pypa.io/en/latest/installation.html
 Создать и активированть virtualenv можна введя в консоле следующие команды:
 
-virtualenv -p /usr/bin/python2.6 <name_env>
+virtualenv -p /usr/bin/python2.7 <name_env>
 cd <name_env>
 source bin/activate
 
